@@ -2,48 +2,47 @@
    BMC — JAVASCRIPT
 ============================================================ */
 
+// Marca que o JS está ativo (as animações de entrada só
+// escondem os elementos quando isto acontece).
+document.documentElement.classList.add("js");
+
+const WHATSAPP_BMC = "5511920133747";
+
+const reduceMotion =
+    window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+
 
 /* ============================================================
    MENU MOBILE
 ============================================================ */
 
 const menuButton = document.getElementById("menuButton");
+const navigation = document.getElementById("mainNav");
 
-const navigation = document.querySelector(".main-nav");
+function setMenu(open) {
+    navigation.classList.toggle("mobile-open", open);
+    menuButton.setAttribute("aria-expanded", String(open));
+    menuButton.setAttribute("aria-label", open ? "Fechar menu" : "Abrir menu");
+}
 
-
-if (menuButton) {
+if (menuButton && navigation) {
 
     menuButton.addEventListener("click", () => {
+        setMenu(!navigation.classList.contains("mobile-open"));
+    });
 
-        navigation.classList.toggle("mobile-open");
+    // Fecha ao clicar em um link
+    navigation.querySelectorAll("a").forEach(link => {
+        link.addEventListener("click", () => setMenu(false));
+    });
 
+    // Fecha com a tecla Esc
+    document.addEventListener("keydown", event => {
+        if (event.key === "Escape") setMenu(false);
     });
 
 }
-
-
-
-/* ============================================================
-   FECHAR MENU AO CLICAR
-============================================================ */
-
-const menuLinks = document.querySelectorAll(
-    ".main-nav a"
-);
-
-
-menuLinks.forEach(link => {
-
-    link.addEventListener("click", () => {
-
-        navigation.classList.remove(
-            "mobile-open"
-        );
-
-    });
-
-});
 
 
 
@@ -51,229 +50,174 @@ menuLinks.forEach(link => {
    HEADER AO ROLAR
 ============================================================ */
 
-const header =
-    document.querySelector(".site-header");
+const header = document.querySelector(".site-header");
 
+function updateHeader() {
+    header.classList.toggle("header-scrolled", window.scrollY > 60);
+}
 
-window.addEventListener("scroll", () => {
-
-    if (window.scrollY > 60) {
-
-        header.classList.add(
-            "header-scrolled"
-        );
-
-    } else {
-
-        header.classList.remove(
-            "header-scrolled"
-        );
-
-    }
-
-});
+if (header) {
+    updateHeader();
+    window.addEventListener("scroll", updateHeader, { passive: true });
+}
 
 
 
 /* ============================================================
-   ANIMAÇÃO DOS ELEMENTOS
+   ANIMAÇÃO DE ENTRADA DOS ELEMENTOS
 ============================================================ */
 
-const observer =
-    new IntersectionObserver(
+const animatedElements = document.querySelectorAll(
+    ".pillar-card, .journey-item, .impact-list div, .join-steps li"
+);
 
-        entries => {
+if ("IntersectionObserver" in window && !reduceMotion) {
 
-            entries.forEach(entry => {
+    const observer = new IntersectionObserver(entries => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add("visible");
+                observer.unobserve(entry.target);
+            }
+        });
+    }, { threshold: 0.12 });
 
-                if (entry.isIntersecting) {
+    animatedElements.forEach(element => observer.observe(element));
 
-                    entry.target.classList.add(
-                        "visible"
-                    );
+} else {
 
-                }
-
-            });
-
-        },
-
-        {
-            threshold: 0.12
-        }
-
-    );
-
-
-const animatedElements =
-    document.querySelectorAll(
-        ".pillar-card, .journey-item, .impact-list div"
-    );
-
-
-animatedElements.forEach(element => {
-
-    observer.observe(element);
-
-});
-
-
-
-/* ============================================================
-   EFEITO DE MOVIMENTO SUAVE DO LOGO
-============================================================ */
-
-const logo =
-    document.querySelector(".hero-logo img");
-
-
-if (logo) {
-
-    document.addEventListener(
-        "mousemove",
-        event => {
-
-            const x =
-                (window.innerWidth / 2 - event.clientX)
-                / 80;
-
-            const y =
-                (window.innerHeight / 2 - event.clientY)
-                / 80;
-
-
-            logo.style.transform =
-                `translate(${x}px, ${y}px)`;
-
-        }
-    );
+    animatedElements.forEach(element => element.classList.add("visible"));
 
 }
 
 
 
 /* ============================================================
-   BRILHO DO FOGO
+   MOVIMENTO SUAVE DO LOGO (só com mouse e sem movimento reduzido)
 ============================================================ */
 
-const fire =
-    document.querySelector(".fire-border");
+const logo = document.querySelector(".hero-logo img");
+const hasMouse = window.matchMedia("(hover: hover) and (pointer: fine)").matches;
 
+if (logo && hasMouse && !reduceMotion) {
 
-let fireDirection = 1;
+    let frame = null;
 
-let fireOpacity = 0.88;
+    document.addEventListener("mousemove", event => {
 
+        if (frame) return;
 
-setInterval(() => {
+        frame = requestAnimationFrame(() => {
+            const x = (window.innerWidth / 2 - event.clientX) / 80;
+            const y = (window.innerHeight / 2 - event.clientY) / 80;
+            logo.style.transform = `translate(${x}px, ${y}px)`;
+            frame = null;
+        });
 
-    fireOpacity +=
-        0.008 * fireDirection;
+    });
 
-
-    if (fireOpacity >= 1) {
-
-        fireDirection = -1;
-
-    }
-
-
-    if (fireOpacity <= 0.78) {
-
-        fireDirection = 1;
-
-    }
-
-
-    fire.style.opacity =
-        fireOpacity;
-
-}, 80);
+}
 
 
 
 /* ============================================================
-   CSS DINÂMICO DAS ANIMAÇÕES
+   FORMULÁRIO "QUERO PARTICIPAR"
+   Monta a mensagem e abre o WhatsApp da liderança.
 ============================================================ */
 
-const dynamicStyle =
-    document.createElement("style");
+const form = document.getElementById("joinForm");
+const phoneInput = document.getElementById("telefone");
+const statusBox = document.getElementById("formStatus");
 
+// Máscara simples de telefone: (11) 9 0000-0000
+if (phoneInput) {
 
-dynamicStyle.innerHTML = `
+    phoneInput.addEventListener("input", () => {
 
-    .pillar-card,
-    .journey-item,
-    .impact-list div {
+        const d = phoneInput.value.replace(/\D/g, "").slice(0, 11);
+        let v = d;
 
-        opacity: 0;
+        if (d.length > 2)  v = `(${d.slice(0, 2)}) ${d.slice(2)}`;
+        if (d.length > 3 && d.length === 11)
+            v = `(${d.slice(0, 2)}) ${d.slice(2, 3)} ${d.slice(3, 7)}-${d.slice(7)}`;
+        else if (d.length > 6)
+            v = `(${d.slice(0, 2)}) ${d.slice(2, 6)}-${d.slice(6)}`;
 
-        transform:
-            translateY(25px);
+        phoneInput.value = v;
 
-        transition:
-            opacity .8s ease,
-            transform .8s ease;
+    });
 
-    }
+}
 
+function showError(input, message) {
+    const box = document.getElementById(`${input.id}-erro`);
+    input.setAttribute("aria-invalid", message ? "true" : "false");
+    if (box) box.textContent = message;
+    if (message) input.setAttribute("aria-describedby", `${input.id}-erro`);
+}
 
-    .pillar-card.visible,
-    .journey-item.visible,
-    .impact-list div.visible {
+if (form) {
 
-        opacity: 1;
+    form.addEventListener("submit", event => {
 
-        transform:
-            translateY(0);
+        event.preventDefault();
 
-    }
+        const nome = form.nome.value.trim();
+        const telefone = form.telefone.value.trim();
+        const digitos = telefone.replace(/\D/g, "");
+        const bairro = form.bairro.value.trim();
+        const frequenta = form.frequenta.value;
+        const mensagem = form.mensagem.value.trim();
 
+        let valido = true;
 
-    .header-scrolled {
-
-        background:
-            rgba(0,0,0,.92);
-
-        box-shadow:
-            0 10px 40px
-            rgba(0,0,0,.45);
-
-    }
-
-
-    @media(max-width:900px) {
-
-        .main-nav.mobile-open {
-
-            display:flex;
-
-            position:absolute;
-
-            top:78px;
-
-            left:0;
-
-            width:100%;
-
-            flex-direction:column;
-
-            padding:25px;
-
-            background:
-                rgba(0,0,0,.96);
-
-            border-bottom:
-                1px solid
-                rgba(201,154,61,.25);
-
+        if (nome.length < 3) {
+            showError(form.nome, "Digite seu nome para a liderança saber com quem está falando.");
+            valido = false;
+        } else {
+            showError(form.nome, "");
         }
 
-    }
+        if (digitos.length < 10) {
+            showError(form.telefone, "Digite seu WhatsApp com DDD, por exemplo (11) 9 0000-0000.");
+            valido = false;
+        } else {
+            showError(form.telefone, "");
+        }
 
-`;
+        if (!valido) {
+            form.querySelector('[aria-invalid="true"]').focus();
+            return;
+        }
+
+        const linhas = [
+            "Olá! Quero participar do BMC.",
+            "",
+            `*Nome:* ${nome}`,
+            `*WhatsApp:* ${telefone}`
+        ];
+
+        if (bairro) linhas.push(`*Bairro/cidade:* ${bairro}`);
+        linhas.push(`*Igreja em Movimento:* ${frequenta}`);
+        if (mensagem) linhas.push("", mensagem);
+
+        const url =
+            `https://wa.me/${WHATSAPP_BMC}?text=${encodeURIComponent(linhas.join("\n"))}`;
+
+        window.open(url, "_blank", "noopener");
+
+        statusBox.textContent =
+            "O WhatsApp foi aberto com sua mensagem. Toque em enviar para concluir.";
+
+    });
+
+}
 
 
-document.head.appendChild(
-    dynamicStyle
-);
+
+/* ============================================================
+   ANO NO RODAPÉ
+============================================================ */
+
+const ano = document.getElementById("ano");
+if (ano) ano.textContent = new Date().getFullYear();

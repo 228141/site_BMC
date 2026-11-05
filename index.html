@@ -5,11 +5,28 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>BMC | Bigorna • Martelo • Cruz</title>
+    <title>BMC | Bigorna • Martelo • Cruz — Igreja em Movimento</title>
 
     <meta
         name="description"
-        content="BMC — Bigorna, Martelo e Cruz. Forjando Homens. Edificando lares."
+        content="BMC — Bigorna, Martelo e Cruz. Programa de formação de homens da Igreja em Movimento. Encontros aos domingos, às 9h, na Mooca, São Paulo."
+    >
+
+    <!-- Compartilhamento (WhatsApp, Facebook etc.) -->
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="BMC | Forjando Homens. Edificando Lares.">
+    <meta property="og:description" content="Programa de formação de homens da Igreja em Movimento. Domingos, 9h — Mooca/SP.">
+    <meta property="og:image" content="img/compartilhamento.jpg">
+    <meta name="theme-color" content="#030303">
+
+    <link rel="icon" type="image/png" href="img/favicon.png">
+
+    <!-- Fontes -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;700;900&family=Inter:wght@400;500;700;900&display=swap"
+        rel="stylesheet"
     >
 
     <link rel="stylesheet" href="style.css">
@@ -17,32 +34,25 @@
 
 <body>
 
+    <a class="skip-link" href="#conteudo">Pular para o conteúdo</a>
+
     <!-- =====================================================
          CAMADAS VISUAIS DE FUNDO
     ====================================================== -->
 
     <!-- Textura principal -->
-    <div class="background-texture"></div>
+    <div class="background-texture" aria-hidden="true"></div>
 
-
-    <!-- Homem estático ao fundo -->
-    <div class="background-man">
-
-        <img
-            src="Homem estático ao fundo.jpeg"
-            alt=""
-            aria-hidden="true"
-        >
-
+    <!-- Guerreiro ao fundo -->
+    <div class="background-man" aria-hidden="true">
+        <img src="img/guerreiro-fundo.webp" alt="">
     </div>
 
-
     <!-- Borda de fogo -->
-    <div class="fire-border"></div>
-
+    <div class="fire-border" aria-hidden="true"></div>
 
     <!-- Brilho e brasas -->
-    <div class="ember-layer"></div>
+    <div class="ember-layer" aria-hidden="true"></div>
 
 
 
@@ -57,58 +67,41 @@
             <a href="#inicio" class="brand">
 
                 <img
-                    src="Logo BMC.jpeg"
-                    alt="BMC - Bigorna Martelo Cruz"
+                    src="img/logo-bmc-pequeno.png"
+                    alt=""
+                    width="44"
+                    height="50"
                 >
 
                 <div class="brand-text">
-
                     <strong>BMC</strong>
-
-                    <span>
-                        BIGORNA • MARTELO • CRUZ
-                    </span>
-
+                    <span>BIGORNA • MARTELO • CRUZ</span>
                 </div>
 
             </a>
 
 
-            <nav class="main-nav">
-
-                <a href="#inicio">
-                    Início
-                </a>
-
-                <a href="#bmc">
-                    O BMC
-                </a>
-
-                <a href="#pilares">
-                    Pilares
-                </a>
-
-                <a href="#jornada">
-                    Jornada
-                </a>
-
-                <a href="#visao">
-                    Visão
-                </a>
-
+            <nav class="main-nav" id="mainNav" aria-label="Menu principal">
+                <a href="#inicio">Início</a>
+                <a href="#bmc">O BMC</a>
+                <a href="#pilares">Pilares</a>
+                <a href="#jornada">Jornada</a>
+                <a href="#visao">Visão</a>
+                <a href="#participar" class="nav-highlight">Participar</a>
             </nav>
 
 
             <button
                 class="menu-button"
                 id="menuButton"
+                type="button"
                 aria-label="Abrir menu"
+                aria-controls="mainNav"
+                aria-expanded="false"
             >
-
                 <span></span>
                 <span></span>
                 <span></span>
-
             </button>
 
         </div>
@@ -116,11 +109,12 @@
     </header>
 
 
-    <!-- =====================================================
-         HERO
-    ====================================================== -->
 
-    <main>
+    <main id="conteudo">
+
+        <!-- =====================================================
+             HERO
+        ====================================================== -->
 
         <section class="hero" id="inicio">
 
@@ -129,13 +123,15 @@
             <div class="container hero-content">
 
                 <div class="hero-logo">
-                    <div class="logo-glow"></div>
 
+                    <div class="logo-glow"></div>
                     <div class="logo-ring"></div>
 
                     <img
-                        src="Logo BMC.jpeg"
-                        alt="Logo BMC"
+                        src="img/logo-bmc.webp"
+                        alt="Brasão do BMC: escudo dourado com coroa, cruz, dois martelos e uma bigorna"
+                        width="700"
+                        height="801"
                     >
 
                 </div>
@@ -144,56 +140,33 @@
                 <div class="hero-copy">
 
                     <div class="eyebrow">
-
                         <span></span>
-
-                        BIGORNA • MARTELO • CRUZ
-
+                        IGREJA EM MOVIMENTO
                     </div>
 
+                    <h1>BMC</h1>
 
-                    <h1>
-                        BMC
-                    </h1>
-
-
-                    <div class="hero-title">
-
-                        <strong>
-                            FORJANDO
-                            <em>HOMENS.</em>
-                        </strong>
-
-                        <strong>
-                            EDIFICANDO
-                            <em>LARES.</em>
-                        </strong>
-
-                    </div>
-
-
-                    <p class="hero-description">
-
-                        Um programa de formação para Homens que busca
-                        ajudá-los a se tornarem Homens segundo a Bíblia.
-
+                    <p class="hero-title">
+                        <strong>FORJANDO <em>HOMENS.</em></strong>
+                        <strong>EDIFICANDO <em>LARES.</em></strong>
                     </p>
 
+                    <p class="hero-description">
+                        Um programa de formação para Homens que busca
+                        ajudá-los a se tornarem Homens segundo a Bíblia.
+                    </p>
+
+                    <p class="hero-meeting">
+                        Encontros aos <strong>domingos, às 9h</strong>, na Mooca — São Paulo.
+                    </p>
 
                     <div class="hero-actions">
 
-                        <a
-                            href="#bmc"
-                            class="button button-primary"
-                        >
-                            CONHEÇA O BMC
+                        <a href="#participar" class="button button-primary">
+                            QUERO PARTICIPAR
                         </a>
 
-
-                        <a
-                            href="#pilares"
-                            class="button button-secondary"
-                        >
+                        <a href="#jornada" class="button button-secondary">
                             NOSSA JORNADA
                         </a>
 
@@ -216,36 +189,22 @@
             <div class="container">
 
                 <div class="section-header">
-
-                    <span class="section-number">
-                        01. O BMC
-                    </span>
-
+                    <span class="section-number">01. O BMC</span>
                 </div>
-
 
                 <div class="bmc-grid">
 
                     <div>
-
-                        <h2>
-                            Formando <span>Homens.</span>
-                        </h2>
-
+                        <h2>Formando <span>Homens.</span></h2>
                     </div>
 
-
                     <div>
-
                         <p class="large-text">
-
                             O BMC é feito de Homens que passaram por
                             dificuldades e hoje estão dispostos a ajudar
                             outros Homens a encontrarem Jesus Cristo por
                             meio de Sua Palavra.
-
                         </p>
-
                     </div>
 
                 </div>
@@ -256,11 +215,14 @@
                     <span>PROPÓSITO</span>
 
                     <blockquote>
-
                         “Ajudar os Homens a se tornarem
                         <strong>Homens segundo a Bíblia.</strong>”
-
                     </blockquote>
+
+                    <p class="verse">
+                        “Como o ferro afia o ferro, assim o homem afia o seu companheiro.”
+                        <cite>Provérbios 27:17</cite>
+                    </p>
 
                 </div>
 
@@ -274,100 +236,75 @@
              PILARES
         ====================================================== -->
 
-        <section
-            class="section section-pillars"
-            id="pilares"
-        >
+        <section class="section section-pillars" id="pilares">
 
             <div class="container">
 
                 <div class="section-header">
-
-                    <span class="section-number">
-                        02. OS TRÊS PILARES
-                    </span>
-
+                    <span class="section-number">02. OS TRÊS PILARES</span>
                 </div>
 
-
                 <h2 class="section-title">
-
                     A Palavra nos <span>Forma.</span><br>
-
                     A disciplina nos <span>Move.</span><br>
-
                     O discipulado nos <span>Envia.</span>
-
                 </h2>
 
 
                 <div class="pillars-grid">
 
-
                     <!-- BIGORNA -->
-
                     <article class="pillar-card">
 
-                        <div class="pillar-number">
-                            01
+                        <div class="pillar-number">01</div>
+
+                        <div class="pillar-symbol" aria-hidden="true">
+                            <svg viewBox="0 0 64 64">
+                                <path d="M4 16h38c1 6 7 10 18 10v5H46c-5 0-8 3-8 7v3h6v7H18v-7h6v-3c0-5-4-8-10-9C8 28 4 23 4 16z"/>
+                                <rect x="14" y="52" width="36" height="5" rx="1"/>
+                            </svg>
                         </div>
 
-                        <div class="pillar-symbol">
-                            ⚒
-                        </div>
+                        <h3>BIGORNA</h3>
 
-                        <h3>
-                            BIGORNA
-                        </h3>
-
-                        <span class="pillar-concept">
-                            FORMAÇÃO
-                        </span>
+                        <span class="pillar-concept">FORMAÇÃO</span>
 
                         <p>
-
                             A Palavra de Deus nos molda.
-
                             Submetemo-nos à Escritura para
                             arrependimento, doutrina e caráter,
                             permitindo que ela forje quem somos.
-
                         </p>
 
                         <div class="pillar-line"></div>
 
                     </article>
-
 
 
                     <!-- MARTELO -->
-
                     <article class="pillar-card">
 
-                        <div class="pillar-number">
-                            02
+                        <div class="pillar-number">02</div>
+
+                        <div class="pillar-symbol" aria-hidden="true">
+                            <svg viewBox="0 0 64 64">
+                                <g transform="rotate(-40 32 32)">
+                                    <rect x="16" y="6" width="32" height="14" rx="2"/>
+                                    <rect x="12" y="9" width="4" height="8" rx="1"/>
+                                    <rect x="28.5" y="20" width="7" height="38" rx="2.5"/>
+                                </g>
+                            </svg>
                         </div>
 
-                        <div class="pillar-symbol">
-                            🔨
-                        </div>
+                        <h3>MARTELO</h3>
 
-                        <h3>
-                            MARTELO
-                        </h3>
-
-                        <span class="pillar-concept">
-                            DISCIPLINA
-                        </span>
+                        <span class="pillar-concept">DISCIPLINA</span>
 
                         <p>
-
                             Transformamos convicções em hábitos.
-
                             Por meio da obediência prática,
                             do trabalho diligente e da pureza,
                             manifestamos a fé em ações.
-
                         </p>
 
                         <div class="pillar-line"></div>
@@ -375,36 +312,28 @@
                     </article>
 
 
-
                     <!-- CRUZ -->
-
                     <article class="pillar-card">
 
-                        <div class="pillar-number">
-                            03
+                        <div class="pillar-number">03</div>
+
+                        <div class="pillar-symbol" aria-hidden="true">
+                            <svg viewBox="0 0 64 64">
+                                <rect x="27" y="4" width="10" height="56" rx="1.5"/>
+                                <rect x="12" y="17" width="40" height="10" rx="1.5"/>
+                            </svg>
                         </div>
 
-                        <div class="pillar-symbol">
-                            ✝
-                        </div>
+                        <h3>CRUZ</h3>
 
-                        <h3>
-                            CRUZ
-                        </h3>
-
-                        <span class="pillar-concept">
-                            DISCIPULADO
-                        </span>
+                        <span class="pillar-concept">DISCIPULADO</span>
 
                         <p>
-
                             Vivemos como discípulos em cada
                             esfera da vida — em casa, na igreja
                             e na cidade.
-
                             Servimos, evangelizamos e geramos
                             um legado que reflete o amor de Cristo.
-
                         </p>
 
                         <div class="pillar-line"></div>
@@ -427,22 +356,12 @@
 
             <div class="container">
 
-                <span>
-                    A JORNADA BMC
-                </span>
+                <span>A JORNADA BMC</span>
 
                 <h2>
-
-                    FORMAÇÃO
-
-                    <i>→</i>
-
-                    DISCIPLINA
-
-                    <i>→</i>
-
+                    FORMAÇÃO <i aria-hidden="true">→</i>
+                    DISCIPLINA <i aria-hidden="true">→</i>
                     DISCIPULADO
-
                 </h2>
 
             </div>
@@ -460,108 +379,49 @@
             <div class="container">
 
                 <div class="section-header">
-
-                    <span class="section-number">
-                        03. A JORNADA
-                    </span>
-
+                    <span class="section-number">03. A JORNADA</span>
                 </div>
 
-
                 <h2 class="section-title">
-
                     O Homem é o começo.<br>
                     <span>O Legado é o Destino.</span>
-
                 </h2>
 
-
                 <p class="section-intro">
-
                     A transformação proposta pelo BMC não termina
                     no Homem. Ela alcança o lar, os filhos e a
                     comunidade.
-
                 </p>
 
 
                 <div class="journey">
 
                     <div class="journey-item">
-
                         <span>01</span>
-
-                        <small>
-                            HOMEM
-                        </small>
-
-                        <h3>
-                            Formação
-                        </h3>
-
-                        <p>
-                            Um Homem confrontado e moldado pela Palavra.
-                        </p>
-
+                        <small>HOMEM</small>
+                        <h3>Formação</h3>
+                        <p>Um Homem confrontado e moldado pela Palavra.</p>
                     </div>
 
-
                     <div class="journey-item">
-
                         <span>02</span>
-
-                        <small>
-                            LAR
-                        </small>
-
-                        <h3>
-                            Exemplo
-                        </h3>
-
-                        <p>
-                            Um Homem que vive sua fé dentro de casa.
-                        </p>
-
+                        <small>LAR</small>
+                        <h3>Exemplo</h3>
+                        <p>Um Homem que vive sua fé dentro de casa.</p>
                     </div>
 
-
                     <div class="journey-item">
-
                         <span>03</span>
-
-                        <small>
-                            FAMÍLIA
-                        </small>
-
-                        <h3>
-                            Transformação
-                        </h3>
-
-                        <p>
-                            Filhos criados vendo o exemplo de
-                            Homens restaurados.
-                        </p>
-
+                        <small>FAMÍLIA</small>
+                        <h3>Transformação</h3>
+                        <p>Filhos criados vendo o exemplo de Homens restaurados.</p>
                     </div>
 
-
                     <div class="journey-item">
-
                         <span>04</span>
-
-                        <small>
-                            COMUNIDADE
-                        </small>
-
-                        <h3>
-                            Legado
-                        </h3>
-
-                        <p>
-                            Homens que servem, evangelizam e
-                            ajudam outros Homens.
-                        </p>
-
+                        <small>COMUNIDADE</small>
+                        <h3>Legado</h3>
+                        <p>Homens que servem, evangelizam e ajudam outros Homens.</p>
                     </div>
 
                 </div>
@@ -583,36 +443,20 @@
                 <div>
 
                     <div class="section-header">
-
-                        <span class="section-number">
-                            04
-                        </span>
-
-                        <span class="section-label">
-                            Nossa visão
-                        </span>
-
+                        <span class="section-number">04. NOSSA VISÃO</span>
                     </div>
 
-
                     <h2>
-
                         Homens restaurados.<br>
-
                         Famílias transformadas.<br>
-
                         <span>Comunidades fortalecidas.</span>
-
                     </h2>
 
-
                     <p class="large-text">
-
                         Ver uma geração de Homens restaurados pela
                         Palavra de Deus transformando seus lares,
                         formando seus filhos pelo exemplo e servindo
                         suas comunidades como Homens bíblicos.
-
                     </p>
 
                 </div>
@@ -621,47 +465,23 @@
                 <div class="impact-list">
 
                     <div>
-                        <strong>
-                            HOMENS
-                        </strong>
-
-                        <span>
-                            Restaurados pela Palavra.
-                        </span>
+                        <strong>HOMENS</strong>
+                        <span>Restaurados pela Palavra.</span>
                     </div>
 
-
                     <div>
-                        <strong>
-                            FAMÍLIAS
-                        </strong>
-
-                        <span>
-                            Transformadas pelo exemplo.
-                        </span>
+                        <strong>FAMÍLIAS</strong>
+                        <span>Transformadas pelo exemplo.</span>
                     </div>
 
-
                     <div>
-                        <strong>
-                            FILHOS
-                        </strong>
-
-                        <span>
-                            Formados por pais presentes
-                            e restaurados.
-                        </span>
+                        <strong>FILHOS</strong>
+                        <span>Formados por pais presentes e restaurados.</span>
                     </div>
 
-
                     <div>
-                        <strong>
-                            COMUNIDADES
-                        </strong>
-
-                        <span>
-                            Ajudadas por Homens bíblicos.
-                        </span>
+                        <strong>COMUNIDADES</strong>
+                        <span>Ajudadas por Homens bíblicos.</span>
                     </div>
 
                 </div>
@@ -680,34 +500,180 @@
 
             <div class="container">
 
-                <span>
-                    BMC — BIGORNA • MARTELO • CRUZ
-                </span>
+                <span>BMC — BIGORNA • MARTELO • CRUZ</span>
 
                 <h2>
-
                     Levante-se, Homem.
-
-                    <strong>
-                        A jornada começa agora.
-                    </strong>
-
+                    <strong>A jornada começa agora.</strong>
                 </h2>
 
                 <p>
-
                     Formação, disciplina e discipulado para
                     uma vida que aponta para Cristo e deixa legado.
+                </p>
 
+                <a href="#participar" class="button button-primary">
+                    COMEÇAR A JORNADA
+                </a>
+
+            </div>
+
+        </section>
+
+
+
+        <!-- =====================================================
+             FAÇA PARTE
+        ====================================================== -->
+
+        <section class="section section-join" id="participar">
+
+            <div class="container">
+
+                <div class="section-header">
+                    <span class="section-number">05. FAÇA PARTE</span>
+                </div>
+
+                <h2 class="section-title">
+                    Como entrar na <span>jornada.</span>
+                </h2>
+
+                <p class="section-intro">
+                    Não é preciso estar pronto para começar. Venha a um
+                    encontro, conheça os Homens do BMC e dê o primeiro passo.
                 </p>
 
 
-                <a
-                    href="#inicio"
-                    class="button button-primary"
-                >
-                    COMEÇAR A JORNADA
-                </a>
+                <!-- Passos -->
+                <ol class="join-steps">
+
+                    <li>
+                        <span>01</span>
+                        <h3>Fale com a gente</h3>
+                        <p>Preencha o formulário ou chame no WhatsApp. Um dos líderes vai te responder.</p>
+                    </li>
+
+                    <li>
+                        <span>02</span>
+                        <h3>Venha a um encontro</h3>
+                        <p>Domingo, às 9h, na Igreja em Movimento. Chegue alguns minutos antes para ser recebido.</p>
+                    </li>
+
+                    <li>
+                        <span>03</span>
+                        <h3>Caminhe junto</h3>
+                        <p>Você passa a fazer parte de um grupo de Homens que se fortalecem na Palavra, semana após semana.</p>
+                    </li>
+
+                </ol>
+
+
+                <div class="join-grid">
+
+                    <!-- Informações do encontro -->
+                    <div class="join-info">
+
+                        <div class="info-block">
+                            <h3>Igreja em Movimento</h3>
+                            <p>O BMC é um ministério de Homens da Igreja em Movimento.</p>
+                        </div>
+
+                        <div class="info-block">
+                            <h3>Quando</h3>
+                            <p>Todo domingo, às <strong>9h</strong>.</p>
+                        </div>
+
+                        <div class="info-block">
+                            <h3>Onde</h3>
+                            <address>
+                                Avenida Visconde de Inhomerim, nº 133<br>
+                                Mooca — São Paulo/SP
+                            </address>
+                            <a
+                                class="text-link"
+                                href="https://www.google.com/maps/search/?api=1&amp;query=Avenida+Visconde+de+Inhomerim+133+Mooca+S%C3%A3o+Paulo+SP"
+                                target="_blank"
+                                rel="noopener"
+                            >
+                                Abrir no Google Maps
+                            </a>
+                        </div>
+
+                        <div class="info-block">
+                            <h3>Contato</h3>
+                            <p>WhatsApp: <strong>(11) 9 2013-3747</strong></p>
+                            <a
+                                class="button button-whatsapp"
+                                href="https://wa.me/5511920133747?text=Ol%C3%A1!%20Quero%20saber%20mais%20sobre%20o%20BMC."
+                                target="_blank"
+                                rel="noopener"
+                            >
+                                <svg viewBox="0 0 32 32" aria-hidden="true"><path d="M16 3a13 13 0 0 0-11.2 19.6L3 29l6.6-1.7A13 13 0 1 0 16 3zm0 23.7c-2 0-4-.6-5.7-1.6l-.4-.2-3.9 1 1-3.8-.3-.4A10.7 10.7 0 1 1 16 26.7zm5.9-8c-.3-.2-1.9-.9-2.2-1-.3-.1-.5-.2-.7.2l-1 1.2c-.2.2-.4.2-.7.1a8.8 8.8 0 0 1-4.4-3.8c-.3-.6.3-.5 1-1.7.1-.2 0-.4 0-.6l-1-2.4c-.3-.6-.5-.5-.7-.5h-.6c-.2 0-.6.1-.9.4-.3.3-1.2 1.1-1.2 2.8s1.2 3.3 1.4 3.5c.2.2 2.4 3.7 5.8 5.1 2.2.9 3 1 4.1.8.7-.1 1.9-.8 2.2-1.5.3-.7.3-1.4.2-1.5l-.3-.2z"/></svg>
+                                CHAMAR NO WHATSAPP
+                            </a>
+                        </div>
+
+                    </div>
+
+
+                    <!-- Formulário -->
+                    <form class="join-form" id="joinForm" novalidate>
+
+                        <h3>Quero participar</h3>
+                        <p class="form-intro">
+                            Preencha e toque em enviar. Sua mensagem abre pronta no
+                            WhatsApp da liderança do BMC.
+                        </p>
+
+                        <div class="field">
+                            <label for="nome">Nome completo</label>
+                            <input id="nome" name="nome" type="text" autocomplete="name" required>
+                            <small class="field-error" id="nome-erro"></small>
+                        </div>
+
+                        <div class="field">
+                            <label for="telefone">Seu WhatsApp</label>
+                            <input
+                                id="telefone"
+                                name="telefone"
+                                type="tel"
+                                inputmode="tel"
+                                autocomplete="tel"
+                                placeholder="(11) 9 0000-0000"
+                                required
+                            >
+                            <small class="field-error" id="telefone-erro"></small>
+                        </div>
+
+                        <div class="field">
+                            <label for="bairro">Bairro / cidade <em>(opcional)</em></label>
+                            <input id="bairro" name="bairro" type="text" autocomplete="address-level2">
+                        </div>
+
+                        <fieldset class="field">
+                            <legend>Você já frequenta a Igreja em Movimento?</legend>
+
+                            <div class="options">
+                                <label><input type="radio" name="frequenta" value="Sim, já frequento" checked> Sim</label>
+                                <label><input type="radio" name="frequenta" value="Ainda não frequento"> Ainda não</label>
+                                <label><input type="radio" name="frequenta" value="Frequento outra igreja"> Frequento outra igreja</label>
+                            </div>
+                        </fieldset>
+
+                        <div class="field">
+                            <label for="mensagem">Quer contar algo para a gente? <em>(opcional)</em></label>
+                            <textarea id="mensagem" name="mensagem" rows="4"></textarea>
+                        </div>
+
+                        <button type="submit" class="button button-primary button-full">
+                            ENVIAR PELO WHATSAPP
+                        </button>
+
+                        <p class="form-status" id="formStatus" role="status" aria-live="polite"></p>
+
+                    </form>
+
+                </div>
 
             </div>
 
@@ -725,22 +691,36 @@
 
         <div class="container">
 
-            <img
-                src="Logo BMC.jpeg"
-                alt="BMC"
-            >
+            <img src="img/logo-bmc-pequeno.png" alt="BMC" width="70" height="80">
 
-            <p>
-                BMC — BIGORNA • MARTELO • CRUZ
-            </p>
+            <p>BMC — BIGORNA • MARTELO • CRUZ</p>
 
-            <span>
-                FORJANDO HOMENS | EDIFICANDO LARES
-            </span>
+            <span class="footer-tagline">FORJANDO HOMENS | EDIFICANDO LARES</span>
+
+            <div class="footer-info">
+                <span>Igreja em Movimento</span>
+                <span>Domingos, 9h</span>
+                <span>Av. Visconde de Inhomerim, 133 — Mooca/SP</span>
+                <a href="https://wa.me/5511920133747" target="_blank" rel="noopener">(11) 9 2013-3747</a>
+            </div>
+
+            <small class="copyright">© <span id="ano">2026</span> BMC — Igreja em Movimento</small>
 
         </div>
 
     </footer>
+
+
+    <!-- Botão flutuante do WhatsApp -->
+    <a
+        class="whatsapp-float"
+        href="https://wa.me/5511920133747?text=Ol%C3%A1!%20Quero%20saber%20mais%20sobre%20o%20BMC."
+        target="_blank"
+        rel="noopener"
+        aria-label="Falar com o BMC no WhatsApp"
+    >
+        <svg viewBox="0 0 32 32" aria-hidden="true"><path d="M16 3a13 13 0 0 0-11.2 19.6L3 29l6.6-1.7A13 13 0 1 0 16 3zm0 23.7c-2 0-4-.6-5.7-1.6l-.4-.2-3.9 1 1-3.8-.3-.4A10.7 10.7 0 1 1 16 26.7zm5.9-8c-.3-.2-1.9-.9-2.2-1-.3-.1-.5-.2-.7.2l-1 1.2c-.2.2-.4.2-.7.1a8.8 8.8 0 0 1-4.4-3.8c-.3-.6.3-.5 1-1.7.1-.2 0-.4 0-.6l-1-2.4c-.3-.6-.5-.5-.7-.5h-.6c-.2 0-.6.1-.9.4-.3.3-1.2 1.1-1.2 2.8s1.2 3.3 1.4 3.5c.2.2 2.4 3.7 5.8 5.1 2.2.9 3 1 4.1.8.7-.1 1.9-.8 2.2-1.5.3-.7.3-1.4.2-1.5l-.3-.2z"/></svg>
+    </a>
 
 
     <script src="script.js"></script>
