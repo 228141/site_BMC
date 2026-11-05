@@ -109,14 +109,13 @@ h1, h2, h3 {
     z-index: 0;
     pointer-events: none;
 
-    background-image: url("img/textura-fundo.jpg");
-    background-size: 420px auto;
-    background-repeat: repeat;
+    background-image: url("img/marmore-antigo.jpg");
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
 
-    opacity: .35;
-    filter: grayscale(1) contrast(1.25) brightness(1.1);
+    opacity: .7;
 }
-
 
 /* ============================================================
    GUERREIRO AO FUNDO
@@ -152,20 +151,6 @@ h1, h2, h3 {
         -webkit-mask-image: linear-gradient(90deg, transparent 0%, #000 30%);
         mask-image: linear-gradient(90deg, transparent 0%, #000 30%);
 }
-
-/* Degradê que faz o guerreiro sumir em direção ao conteúdo 
-.background-man::after {
-    content: "";
-    position: absolute;
-    inset: 0;
-    background: linear-gradient(
-        90deg,
-        rgba(3,3,3,1) 0%,
-        rgba(3,3,3,.70) 25%,
-        rgba(3,3,3,.25) 60%,
-        rgba(3,3,3,0) 100%
-    );
-} */
 
 main,
 footer {
@@ -355,7 +340,6 @@ footer {
     inset: 0;
     background:
         radial-gradient(circle at 75% 45%, rgba(255,70,0,.12), transparent 25%);
-        /*linear-gradient(90deg, rgba(0,0,0,.75), rgba(0,0,0,.35))*/
 }
 
 .hero-content {
@@ -552,16 +536,7 @@ footer {
 .section {
     position: relative;
     padding: 110px 0;
-    /*border-bottom: 1px solid rgba(255,255,255,.05);*/
 }
-
-/*.section::before {
-    content: "";
-    position: absolute;
-    inset: 0;
-    z-index: -1;
-    background: rgba(0,0,0,.68);
-}*/
 
 .section-header {
     display: flex;
@@ -736,9 +711,7 @@ footer {
     padding: 90px 0;
     text-align: center;
     background: transparent;
-    /*background: rgba(5,5,5,.85);
-    border-top: 1px solid rgba(255,70,0,.15);
-    border-bottom: 1px solid rgba(201,154,61,.20);*/
+
 }
 
 .forge-statement span {
@@ -860,7 +833,6 @@ footer {
     text-align: center;
     background:
         radial-gradient(circle at center, rgba(255,70,0,.10), transparent 45%);
-        /*rgba(0,0,0,.55)*/
 }
 
 .final-cta > .container > span {
@@ -1089,8 +1061,6 @@ footer {
     padding: 50px 0 90px;
     text-align: center;
     background: linear-gradient(transparent, rgba(0,0,0,.85) 40%);
-    /*background: rgba(0,0,0,.9);
-    border-top: 1px solid rgba(201,154,61,.18);*/
 }
 
 footer img {
