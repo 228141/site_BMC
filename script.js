@@ -68,7 +68,7 @@ if (header) {
 ============================================================ */
 
 const animatedElements = document.querySelectorAll(
-    ".pillar-card, .journey-item, .impact-list div, .join-steps li"
+    ".pillar-card, .journey-item, .impact-list div, .join-steps li, .belief, .vows-list li"
 );
 
 if ("IntersectionObserver" in window && !reduceMotion) {

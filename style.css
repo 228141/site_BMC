@@ -54,6 +54,10 @@ body {
     overflow-x: hidden;
 }
 
+[hidden] {
+    display: none !important;
+}
+
 img,
 svg {
     display: block;
@@ -117,6 +121,7 @@ h1, h2, h3 {
     opacity: .7;
 }
 
+
 /* ============================================================
    GUERREIRO AO FUNDO
 ============================================================ */
@@ -148,9 +153,11 @@ h1, h2, h3 {
         contrast(1.25)
         brightness(.75)
         sepia(.15);
-        -webkit-mask-image: linear-gradient(90deg, transparent 0%, #000 30%);
-        mask-image: linear-gradient(90deg, transparent 0%, #000 30%);
+
+    -webkit-mask-image: linear-gradient(90deg, transparent 0%, #000 30%);
+    mask-image: linear-gradient(90deg, transparent 0%, #000 30%);
 }
+
 
 main,
 footer {
@@ -538,6 +545,7 @@ footer {
     padding: 110px 0;
 }
 
+
 .section-header {
     display: flex;
     align-items: center;
@@ -711,7 +719,6 @@ footer {
     padding: 90px 0;
     text-align: center;
     background: transparent;
-
 }
 
 .forge-statement span {
@@ -745,7 +752,7 @@ footer {
 
 .journey {
     display: grid;
-    grid-template-columns: repeat(4, 1fr);
+    grid-template-columns: repeat(3, 1fr);
     margin-top: 50px;
     border: 1px solid rgba(255,255,255,.08);
 }
@@ -755,10 +762,15 @@ footer {
     padding: 30px;
     background: rgba(5,5,5,.78);
     border-right: 1px solid rgba(255,255,255,.07);
+    border-bottom: 1px solid rgba(255,255,255,.07);
 }
 
-.journey-item:last-child {
+.journey-item:nth-child(3n) {
     border-right: 0;
+}
+
+.journey-item:nth-last-child(-n+3) {
+    border-bottom: 0;
 }
 
 .journey-item > span {
@@ -1142,7 +1154,9 @@ footer p {
 .js .pillar-card,
 .js .journey-item,
 .js .impact-list div,
-.js .join-steps li {
+.js .join-steps li,
+.js .belief,
+.js .vows-list li {
     opacity: 0;
     transform: translateY(25px);
     transition: opacity .8s ease, transform .8s ease, border-color .4s, box-shadow .4s;
@@ -1151,7 +1165,9 @@ footer p {
 .js .pillar-card.visible,
 .js .journey-item.visible,
 .js .impact-list div.visible,
-.js .join-steps li.visible {
+.js .join-steps li.visible,
+.js .belief.visible,
+.js .vows-list li.visible {
     opacity: 1;
     transform: translateY(0);
 }
@@ -1201,7 +1217,7 @@ footer p {
    RESPONSIVO
 ============================================================ */
 
-@media (max-width: 900px) {
+@media (max-width: 1100px) {
 
     .main-nav {
         display: none;
@@ -1225,9 +1241,32 @@ footer p {
         display: block;
     }
 
+}
+
+
+@media (max-width: 900px) {
+
+    .main-nav.mobile-open {
+        display: flex;
+        position: absolute;
+        top: var(--header-height);
+        left: 0;
+        width: 100%;
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 22px;
+        padding: 25px 4%;
+        background: rgba(0,0,0,.96);
+        border-bottom: 1px solid rgba(201,154,61,.25);
+    }
+
+    .menu-button {
+        display: block;
+    }
+
     .background-man {
         width: 100vw;
-        opacity: .6;
+        opacity: .35;
     }
 
     .hero-content {
@@ -1327,6 +1366,336 @@ footer p {
 
 
 /* ============================================================
+   TEXTOS NOVOS DO MANIFESTO
+============================================================ */
+
+.bmc-grid .large-text + .large-text {
+    margin-top: 16px;
+}
+
+.large-text strong {
+    color: var(--gold-light);
+}
+
+.mission-sub {
+    margin-top: 14px;
+    color: var(--white);
+    font-size: 18px;
+}
+
+.verse-list {
+    margin-top: 18px;
+    color: var(--gray-dark);
+    font-size: 12px;
+    letter-spacing: 2px;
+}
+
+.forge-statement p {
+    max-width: 640px;
+    margin: 18px auto 0;
+    color: var(--gray);
+}
+
+
+/* ---------- O que cremos ---------- */
+
+.beliefs-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap: 18px;
+    margin-top: 50px;
+}
+
+.belief {
+    padding: 26px;
+    border-left: 2px solid var(--gold);
+    background: rgba(5,5,5,.8);
+}
+
+.belief h3 {
+    font-size: 19px;
+    color: var(--gold-light);
+}
+
+.belief p {
+    margin-top: 8px;
+    color: var(--gray);
+    font-size: 15px;
+}
+
+.belief cite {
+    display: block;
+    margin-top: 10px;
+    color: var(--fire-light);
+    font-size: 12px;
+    font-style: normal;
+    letter-spacing: 1px;
+}
+
+
+/* ---------- Votos ---------- */
+
+.vows-list {
+    list-style: none;
+    counter-reset: voto;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0 40px;
+    margin-top: 30px;
+    padding: 10px 34px;
+    border: 1px solid var(--border);
+    background: rgba(5,5,5,.86);
+}
+
+.vows-list li {
+    counter-increment: voto;
+    position: relative;
+    padding: 16px 0 16px 52px;
+    color: var(--gray);
+    border-bottom: 1px solid rgba(201,154,61,.15);
+}
+
+.vows-list li::before {
+    content: counter(voto, decimal-leading-zero);
+    position: absolute;
+    left: 0;
+    top: 16px;
+    font-family: var(--font-display);
+    font-weight: 700;
+    color: var(--gold);
+}
+
+.vows-list strong {
+    color: var(--white);
+}
+
+
+/* ---------- Juramento ---------- */
+
+.oath {
+    max-width: 760px;
+    margin: 0 auto 26px;
+}
+
+.oath p {
+    margin: 10px auto 0 !important;
+    color: var(--gray);
+    font-size: 18px;
+}
+
+.oath strong {
+    color: var(--gold-light);
+}
+
+.final-cta p.oath-close {
+    max-width: 700px;
+    margin: 0 auto 34px;
+    color: var(--white);
+    font-family: var(--font-display);
+    font-size: 20px;
+}
+
+
+/* ---------- Redes sociais ---------- */
+
+.social-links {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin-top: 8px;
+}
+
+.social-links a {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    color: var(--gold-light);
+    font-weight: 700;
+    font-size: 15px;
+}
+
+.social-links svg,
+.footer-social svg {
+    width: 22px;
+    height: 22px;
+    fill: currentColor;
+}
+
+.social-links a:hover,
+.footer-social a:hover {
+    color: var(--white);
+}
+
+.footer-social {
+    display: flex;
+    justify-content: center;
+    gap: 18px;
+    margin-top: 20px;
+}
+
+.footer-social a {
+    display: grid;
+    place-items: center;
+    width: 42px;
+    height: 42px;
+    border: 1px solid var(--border);
+    border-radius: 50%;
+    color: var(--gold-light);
+}
+
+
+/* ============================================================
+   FAIXAS DE IMAGEM (trocam conforme a rolagem)
+   A imagem fica "parada" na tela enquanto a faixa passa,
+   como uma janela. O clip-path recorta a camada fixa só
+   dentro da faixa — funciona também no iPhone.
+============================================================ */
+
+.image-band {
+    position: relative;
+    z-index: 2;
+    min-height: 90vh;
+    display: flex;
+    align-items: center;
+    clip-path: inset(0);
+}
+
+.band-fixed {
+    position: fixed;
+    inset: 0;
+    z-index: -1;
+    pointer-events: none;
+}
+
+/* fundo desfocado que preenche as laterais em telas largas */
+.band-blur {
+    position: absolute;
+    inset: -40px;
+    background-size: cover;
+    background-position: center;
+    filter: blur(24px);
+}
+
+/* imagem nítida, ocupando a altura da tela */
+.band-photo {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    width: min(58vh, 50vw);
+    background-size: cover;
+    background-position: center;
+    -webkit-mask-image: linear-gradient(90deg, transparent, #000 18%, #000 82%, transparent);
+    mask-image: linear-gradient(90deg, transparent, #000 18%, #000 82%, transparent);
+}
+
+.band-right .band-photo { right: 6vw; }
+.band-left  .band-photo { left: 6vw; }
+
+/* escurece o lado do texto para leitura */
+.band-fixed::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+}
+
+.band-right .band-fixed::after {
+    background: linear-gradient(90deg, rgba(3,3,3,.85) 0%, rgba(3,3,3,.45) 45%, rgba(3,3,3,0) 70%);
+}
+
+.band-left .band-fixed::after {
+    background: linear-gradient(270deg, rgba(3,3,3,.85) 0%, rgba(3,3,3,.45) 45%, rgba(3,3,3,0) 70%);
+}
+
+.band-content {
+    position: relative;
+    padding: 80px 0;
+}
+
+.band-content > * {
+    max-width: 520px;
+}
+
+.band-left .band-content > * {
+    margin-left: auto;
+    text-align: right;
+}
+
+.band-content span {
+    display: block;
+    color: var(--gold-light);
+    font-size: 11px;
+    font-weight: 900;
+    letter-spacing: 4px;
+}
+
+.band-content blockquote {
+    margin-top: 18px;
+    font-family: var(--font-display);
+    font-size: clamp(26px, 3.4vw, 42px);
+    font-weight: 700;
+    line-height: 1.2;
+    text-shadow: 0 4px 24px rgba(0,0,0,.9);
+}
+
+.band-content cite {
+    display: block;
+    margin-top: 16px;
+    color: var(--fire-light);
+    font-style: normal;
+    font-size: 14px;
+    letter-spacing: 2px;
+}
+
+
+/* ============================================================
+   RESPONSIVO DOS ELEMENTOS NOVOS
+============================================================ */
+
+@media (max-width: 900px) {
+
+    .journey-item:nth-child(n) {
+        border-right: 0;
+        border-bottom: 1px solid rgba(255,255,255,.07);
+    }
+
+    .journey-item:last-child {
+        border-bottom: 0;
+    }
+
+    .vows-list {
+        grid-template-columns: 1fr;
+        padding: 6px 20px;
+    }
+
+    /* celular em pé: a imagem cobre a tela toda */
+    .band-right .band-photo,
+    .band-left .band-photo {
+        inset: 0;
+        width: auto;
+        -webkit-mask-image: none;
+        mask-image: none;
+    }
+
+    .band-fixed::after,
+    .band-right .band-fixed::after,
+    .band-left .band-fixed::after {
+        background: linear-gradient(0deg, rgba(3,3,3,.9) 0%, rgba(3,3,3,.35) 50%, rgba(3,3,3,.15) 100%);
+    }
+
+    .image-band {
+        align-items: flex-end;
+        min-height: 85vh;
+    }
+
+    .band-left .band-content > * {
+        margin-left: 0;
+        text-align: left;
+    }
+
+}
+
+
+/* ============================================================
    MOVIMENTO REDUZIDO
    Respeita quem configurou o aparelho para ter menos animação.
 ============================================================ */
@@ -1347,7 +1716,9 @@ footer p {
     .js .pillar-card,
     .js .journey-item,
     .js .impact-list div,
-    .js .join-steps li {
+    .js .join-steps li,
+    .js .belief,
+    .js .vows-list li {
         opacity: 1;
         transform: none;
     }
