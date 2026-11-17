@@ -198,7 +198,7 @@ if (form) {
         ];
 
         if (bairro) linhas.push(`*Bairro/cidade:* ${bairro}`);
-        linhas.push(`*Igreja em Movimento:* ${frequenta}`);
+        linhas.push(`*Já faz parte de uma igreja local? Qual é sua congregação/paroquia?:* ${frequenta}`);
         if (mensagem) linhas.push("", mensagem);
 
         const url =
