@@ -6,7 +6,7 @@
 // escondem os elementos quando isto acontece).
 document.documentElement.classList.add("js");
 
-const WHATSAPP_BMC = "5511920133747";
+const WHATSAPP_BMC = "5511977479115";
 
 const reduceMotion =
     window.matchMedia("(prefers-reduced-motion: reduce)").matches;
