@@ -90,8 +90,6 @@ if ("IntersectionObserver" in window && !reduceMotion) {
 
 }
 
-
-
 /* ============================================================
    MOVIMENTO SUAVE DO LOGO (só com mouse e sem movimento reduzido)
 ============================================================ */

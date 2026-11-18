@@ -1802,6 +1802,53 @@ footer p {
 }
 
 /* ============================================================
+   IMAGENS DE FUNDO DOS PILARES
+============================================================ */
+
+.pillar-bigorna { --pillar-img: url("img/pilar-bigorna.webp"); }
+.pillar-martelo { --pillar-img: url("img/pilar-martelo.webp"); }
+.pillar-cruz    { --pillar-img: url("img/pilar-cruz.webp"); }
+
+/* a imagem */
+.pillar-card::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: var(--pillar-img) center 30% / cover no-repeat;
+    opacity: .55;
+    transition: transform .8s ease, opacity .5s ease;
+}
+
+/* véu escuro para o texto continuar legível */
+.pillar-card::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(
+        180deg,
+        rgba(5,5,5,.30) 0%,
+        rgba(5,5,5,.70) 45%,
+        rgba(5,5,5,.94) 100%
+    );
+}
+
+/* conteúdo por cima da imagem (a linha de baixo continua no lugar) */
+.pillar-card > *:not(.pillar-line) {
+    position: relative;
+    z-index: 1;
+}
+
+.pillar-card .pillar-line {
+    z-index: 1;
+}
+
+/* leve zoom e brilho ao passar o mouse */
+.pillar-card:hover::before {
+    transform: scale(1.06);
+    opacity: .75;
+}
+
+/* ============================================================
    MOVIMENTO REDUZIDO
    Respeita quem configurou o aparelho para ter menos animação.
 ============================================================ */
