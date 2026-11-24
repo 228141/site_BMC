@@ -1877,3 +1877,38 @@ footer p {
     }
 
 }
+
+/* ============================================================
+   RODAPÉ — CONTATO E CRÉDITOS
+============================================================ */
+
+footer .footer-contact {
+    display: table;
+    margin: 16px auto 0;
+    color: var(--gold-light);
+    font-size: 15px;
+    font-weight: 700;
+    letter-spacing: 1px;
+    text-decoration: none;
+}
+
+footer .footer-contact:hover {
+    color: var(--white);
+}
+
+footer .footer-credit {
+    display: block;
+    margin-top: 6px;
+    color: var(--gray-dark);
+    font-size: 12px;
+}
+
+footer .footer-credit a {
+    color: var(--gold);
+    text-decoration: underline;
+    text-underline-offset: 3px;
+}
+
+footer .footer-credit a:hover {
+    color: var(--gold-light);
+}
